@@ -1,0 +1,15 @@
+---
+- name: Configure remote server
+  hosts: web_servers
+  become: yes
+  tasks:
+    - name: Ensure NGINX is installed
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Start NGINX service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
